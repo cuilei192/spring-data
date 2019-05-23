@@ -1,0 +1,55 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    primary:
+#      driver-class-name: oracle.jdbc.driver.OracleDriver
+#      url: jdbc:oracle:thin:@10.131.216.48:1521:idp
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/ms?useUnique=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+      username: root
+      password: 123456
+    secondary:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/study?useUnique=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+      username: root
+      password: 123456
+    druid:
+      filter:
+        stat:
+          slow-sql-millis: 1
+          log-slow-sql: true
+      min-idle: 3
+      web-stat-filter:
+        principal-cookie-name: admin
+        session-stat-enable: false
+        url-pattern: /*
+        session-stat-max-count: 1000
+        #排除一些不必要的url
+        exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
+        profile-enable: true
+        principal-session-name: admin
+        enabled: true
+      stat-view-servlet:
+        login-password: admin
+        login-username: admin
+      #pool
+      max-active: 10
+      initial-size: 3
+      max-wait: 60000
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://10.131.216.70:8761/eureka/
+#logging:
+#  level:
+#    com:
+#      euler: debug 
+#    org:
+#      springfromework:
+#        web: info
+#mybatis配置
+mybatis:
+  mapper-locations: classpath*:mapper/*.xml
+  

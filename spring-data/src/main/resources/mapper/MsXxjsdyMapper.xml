@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.datasource.dao.MsXxjsdyDao">
+  <resultMap id="BaseResultMap" type="com.datasource.bean.MsXxjsdy">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="xxlxid" jdbcType="INTEGER" property="xxlxid" />
+    <result column="sfck" jdbcType="INTEGER" property="sfck" />
+    <result column="mbb" jdbcType="VARCHAR" property="mbb" />
+    <result column="ckjkm" jdbcType="VARCHAR" property="ckjkm" />
+    <result column="sffb" jdbcType="INTEGER" property="sffb" />
+    <result column="fbpl" jdbcType="INTEGER" property="fbpl" />
+    <result column="cjsj" jdbcType="DATE" property="cjsj" />
+    <result column="xgsj" jdbcType="DATE" property="xgsj" />
+  </resultMap>
+  <insert id="insert" parameterType="com.datasource.bean.MsXxjsdy">
+    insert into ms_xxjsdy (id, xxlxid, sfck, 
+      mbb, ckjkm, sffb, fbpl, 
+      cjsj, xgsj)
+    values (#{id,jdbcType=INTEGER}, #{xxlxid,jdbcType=INTEGER}, #{sfck,jdbcType=INTEGER}, 
+      #{mbb,jdbcType=VARCHAR}, #{ckjkm,jdbcType=VARCHAR}, #{sffb,jdbcType=INTEGER}, #{fbpl,jdbcType=INTEGER}, 
+      #{cjsj,jdbcType=DATE}, #{xgsj,jdbcType=DATE})
+  </insert>
+  
+  <select id="getMsXxjsdyById" resultType="com.datasource.bean.MsXxjsdy">
+  select * from ms_xxjsdy where xxlxid=#{id}
+  </select>
+  
+  
+</mapper>
